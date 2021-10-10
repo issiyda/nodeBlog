@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>新規登録</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<h1>新規登録</h1>
+<form action="/auth/register" method="POST">
+    <div class="row">
+        <label for="name" class="label">
+            名前
+        </label>
+        <input id="name" class="input" type="text" name="name" placeholder="田中　太郎" value=<%= name %>>
+    </div>
+    <div class="row">
+    <label for="email" class="label">
+        メールアドレス
+    </label>
+    <input id="email" class="input" type="text" name="email" placeholder="test@test.com" value=<%= email %>>
+    </div>
+    <div class="row">
+    <label for="password" class="label">
+        パスワード
+    </label>
+    <input id="password" class="input" type="password" name="password" placeholder="">
+    </div>
+    <div class="center">
+        <button class="submit" type="submit">送信</button>
+    </div>
+
+    <div>
+        <% if(error) { %>
+        <div class="error"><%= error %></div>
+        <% } %>
+    </div>
+</form>
+</body>
+</html>

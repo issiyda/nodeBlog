@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ブログ編集</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script type="text/javascript">
+        const loginCLick = () => {
+          document.location.href = "/auth/login";
+        }
+    
+        const registerClick = () => {
+          document.location.href = "/auth/register";
+        }
+    
+        const toBlogCLick = () => {
+          document.location.href = "/blog";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>ブログ編集</h1>
+    <button onClick="toBlogCLick()">ブログ一覧へ</button>
+    <form action="/blog/edit/<%= blog.id %>" method="post">
+        <div class="row">
+            <label class="label" for="title">
+                タイトル
+            </label>
+            <input id="title" class="input" type="text" name="title" value="<%= blog.title %>" placeholder="今日の開発">
+        </div>
+        <div class="row">
+            <label class="label" for="contents">
+                内容
+            </label>
+            <textarea id="contents" class="input textarea" name="contents" type="text" placeholder="本日は〇〇を開発しました。"><%= blog.contents %></textarea>
+        </div>
+        <div class="center">
+            <button class="submit" type="submit">更新</button>
+        </div>
+</form>
+</body>
+</html>

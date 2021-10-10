@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ブログ詳細</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script type="text/javascript">
+        const editClick = (blogId) => {
+            console.log("blogId", blogId)
+          document.location.href = `/blog/edit/${blogId}`;
+        }
+        const deleteClick = (blogId, title) => {
+            console.log("title", blogId, title)
+            const result = window.confirm(`本当に『${title}』のタイトルのブログを削除しますか？`)
+            if(result){
+                document.location.href = `/blog/delete/${blogId}`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>ブログ詳細</h1>
+    <% if(blog.userId === userId) { %>
+        <div class="blogButtonContainer">
+            <button class="editButton" onclick="editClick(`<%= blog.id %>`)">更新</button>
+            <button class="deleteButton" onClick="deleteClick(`<%= blog.id %>`,`<%= blog.title %>`)">削除</button>
+        </div>
+    <% } %>
+    <div class="cardsContainer">
+        <div class="oneCard">
+      　    <p>タイトル</p>
+      　    <p class="space"><%=  blog.title %></p>
+      　    <p>内容</p>
+      　    <p class="space"><%=  blog.contents %></p>
+      　    <p>投稿日</p>
+      　    <p class="space"><%=  blog.createdAt %></p>
+      　    <p>更新日</p>
+      　    <p class="space"><%=  blog.updatedAt %></p>
+        </div>
+    </div>
+</body>
+</html>

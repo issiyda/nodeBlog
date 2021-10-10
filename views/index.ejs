@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    const loginCLick = () => {
+      document.location.href = "/auth/login";
+    }
+
+    const registerClick = () => {
+      document.location.href = "/auth/register";
+    }
+
+    const toBlogCLick = () => {
+      document.location.href = "/blog";
+    }
+</script>
+<% if(name) { %>
+        <a href="/auth/logout">
+            ログアウト
+        </a>
+        <button onClick="toBlogCLick()">ブログ一覧</button>
+ <% } else { %>
+    <div>
+        <button onclick="loginCLick()">ログイン</button>
+        <button onClick="registerClick()">新規登録</button>
+    </div>
+<% } %>
+
+<h1>Express学習ラスト</h1>
+

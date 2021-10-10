@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ブログ一覧</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script type="text/javascript">
+        const postClick = () => {
+          document.location.href = "/blog/post";
+        }
+    </script>
+</head>
+<body>
+    <h1>ブログ一覧</h1>
+    <button onClick="postClick()">新規投稿</button>
+    <div class="blogCount">投稿件数: <%= blogs.length %>件</div>
+    <div class="cardsContainer">
+        <% blogs.map((blog) => { %>
+            <div class="cardWrapper">
+            <a class="detailButton" href="/blog/detail/<%=  blog.id %>">詳細</a>
+            <% if(userId === blog.userId){ %>
+            <a class="editButton" href="/blog/edit/<%=  blog.id %>">編集</a>
+            <% } %>
+                <p>タイトル</p>
+                <p class="space"><%=  blog.title %></p>
+                <p>投稿者</p>
+                <p class="space"><%=  blog.user.name %></p>
+                <p>内容</p>
+                <p class="space"><%=  blog.contents %></p>
+                <p>投稿日</p>
+                <p class="space"><%=  blog.createdAt %></p>
+                <p>更新日</p>
+                <p class="space"><%=  blog.updatedAt %></p>
+            </div>
+        <%  }) %>
+</div>
+</body>
+</html>
